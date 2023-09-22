@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/all.min.css">
+  <title>Product Details</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.min.js"></script>
+
+</head>
+
+<body>
+
+  <div id="loader-wrapper">
+    <div id="loader"></div>
+  </div>
+
+
+
+  <header class="main-header">
+    <!-- Navigation start -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container">
+      <!-- Toggler on the left -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Logo on the right -->
+      <a href="HomePage.html">
+        <img src="img/kidsmarket.jpg" alt="" height="200" width="200" class="img-fluid" />
+      </a>
+      
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a href="HomePage.html" class="nav-link">Home</a></li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="categoriesDropdown" data-bs-toggle="dropdown">
+                Products
+            </a>
+            <div class="dropdown-menu" aria-labelledby="categoriesDropdown">
+                <a class="dropdown-item" href="boys.html">Boys</a>
+                <a class="dropdown-item" href="girls.html">Girls</a>
+                <a class="dropdown-item" href="accessories.html">Accessories</a>
+            </div>
+        </li>
+        
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="service.html" class="nav-link">Service</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </li>
+       
+        <li class="nav-item">
+          <a href="cart.html" class="nav-link">
+              <div class="cart-icon-container">
+                  <i class="fas fa-shopping-cart"></i> 
+                  <span id="cartCount" class="cart-count">0</span>
+              </div>
+          </a>
+      </li>
+  
+          <li class="nav-item"  >
+            <a href="login.html" class="nav-link btn btn-primary">Login</a>
+          </li>
+       
+  
+        
+        </ul>
+      </div>
+    </div>
+  </nav>
+  </header>  
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-6">
+        <img id="main-product-image" class="img-fluid product-image" src="" alt="" style="width: 500px; height: 400px; object-fit: cover;">
+        <div id="product-thumbnails" class="d-flex flex-row justify-content-between mt-2"></div>
+      </div>
+      <div class="col-lg-6">
+        <h1 id="product-name"></h1>
+        <p id="product-description"></p>
+      </div>
+    </div>
+  </div>
+
+<script>
+$(window).on("load", function() {
+    $("#loader-wrapper").fadeOut("slow");
+});
+
+$(document).ready(function(){
+  const loginInfo = localStorage.getItem('loginInfo');
+  if(loginInfo) {
+    $('.nav-link.btn.btn-primary').hide();
+  } else {
+    $('.nav-link.btn.btn-primary').show();
+  }
+
+  // to be replaced with actual product data fetch
+  const product = {
+    name: "Product name",
+    description: "Full description of the product",
+    images: ["img/product1.jpg", "img/product2.jpg", "img/product3.jpg", "img/product4.jpg"],
+  };
+  
+  $('#product-name').text(product.name);
+  $('#product-description').text(product.description);
+  changeMainProductImage(product.images[0]);
+
+  let thumbnails = '';
+  product.images.forEach((image) => {
+    thumbnails += `<img class="img-fluid product-thumbnail" src="${image}" alt="${product.name}" style="width: 60px; height: 60px; object-fit: cover; cursor: pointer;">`;
+  });
+  $('#product-thumbnails').html(thumbnails);
+  
+  $('.product-thumbnail').on('click', function() {
+    const selectedImage = $(this).attr('src');
+    changeMainProductImage(selectedImage);
+  });
+});
+
+function changeMainProductImage(imageSrc) {
+  // Remove previous zoom plugin instance
+  $('.zoomContainer').remove();
+  $('#main-product-image').removeData('elevateZoom');
+  
+  // Set the new image source
+  $('#main-product-image').attr('src', imageSrc).on('load', function() {
+    // Apply the zoom plugin to the new image
+    $(this).elevateZoom({
+      zoomWindowWidth: 200,    // width of the zoom window
+      zoomWindowHeight: 200,   // height of the zoom window
+      zoomWindowOffetx: 10,    // x offset of the zoom window
+      lensSize: 200,           // size of the lens
+      cursor: 'pointer',       // type of cursor when hovering over the image
+      scrollZoom: true,        // enable zoom on mouse wheel scroll
+      borderSize: 1,           // size of the border around the zoom window
+      borderColour: '#888',    // color of the border around the zoom window
+      zoomWindowPosition: 1,   // position of the zoom window, 1 for right side
+      easing: true,            // use easing effects when changing zoom
+      zoomWindowFadeIn: 500,   // speed of zoom window fade-in in milliseconds
+      zoomWindowFadeOut: 500,  // speed of zoom window fade-out in milliseconds
+      lensFadeIn: 500,         // speed of lens fade-in in milliseconds
+      lensFadeOut: 500         // speed of lens fade-out in milliseconds
+    });
+  });
+
+
+
+}
+</script>
+
+</body>
+</html>

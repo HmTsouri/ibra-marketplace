@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/all.min.css">
+  <title>Cart</title>
+</head>
+
+<body>
+  <!-- Navigation start -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+      <div class="d-flex justify-content-end align-items-center">
+        <!-- Toggler on the left -->
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navmenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Logo on the right -->
+        <a href="HomePage.html">
+          <img src="img/logo.png" alt="" height="255" width="255" class="img-fluid" />
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a href="HomePage.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="service.html" class="nav-link">Service</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="nav-item">
+            <a href="login.html" class="nav-link btn btn-primary">Login</a>
+          </li>
+          <li class="nav-item">
+            <a href="cart.html" class="nav-link btn btn-primary">
+              <i class="fas fa-shopping-cart"></i> Cart <span id="cartCount">0</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Navigation end -->
+
+  <!-- Cart section start -->
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Cart</h3>
+          </div>
+          <div class="card-body">
+            <div id="cartItems"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Cart section end -->
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-3">
+        <button class="btn btn-primary btn-lg" id="checkoutBtn" style="display: none;" onclick="proceedToCheckout()">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/cart.js">  </script>
+</body>
+
+</html>

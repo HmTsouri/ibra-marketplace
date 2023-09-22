@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/all.min.css">
+  <title>My Webpage</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+
+<body>
+  <div id="loader-wrapper">
+    <div id="loader"></div>
+  </div>
+
+  <!-- Navigation start -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+      <!-- Toggler on the left -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Logo on the right -->
+      <a href="HomePage.html">
+        <img src="img/kidsmarket.jpg" alt="" height="200" width="200" class="img-fluid" />
+      </a>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a href="HomePage.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="service.html" class="nav-link">Service</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              My Account
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="general information.html">General Information</a>
+              <a class="dropdown-item" href="security.html">Security</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="cart.html" class="nav-link">
+                <div class="cart-icon-container">
+                    <i class="fas fa-shopping-cart"></i> 
+                    <span id="cartCount" class="cart-count">0</span>
+                </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Navigation end -->
+
+  <!-- Showcase start -->
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Welcome to your Baby Kids Market</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Filter option and search bar -->
+   <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-3">
+        <div class="profile-container">
+          <div class="user-profile">
+            <div class="profile-image-custom">
+              <img id="profile-picture" src="" alt="Profile Picture" class="img-fluid rounded-circle">
+            </div>
+            <div class="username" id="username"></div>
+          </div>
+        </div>
+    
+        <hr>
+        <div class="filter-options mt-5">
+          <ul>
+            <li>
+              <h5>Filter by:</h5>
+            </li>
+            <li>Category
+              <ul>
+                <li><input type="checkbox" id="boys" name="category" value="Boys"><label for="boys">Boys</label></li>
+                <li><input type="checkbox" id="girls" name="category" value="Girls"><label for="girls">Girls</label></li>
+                <li><input type="checkbox" id="accessories" name="category" value="Accessories"><label for="accessories">Accessories</label></li>
+              </ul>
+            </li>
+            <li>Age
+              <ul>
+                <li><input type="checkbox" id="1to6mos" name="age" value="1to6mos"><label for="1to6mos">1 to 6 mos</label></li>
+                <li><input type="checkbox" id="6to12mos" name="age" value="6to12mos"><label for="6to12mos">6 to 12 mos</label></li>
+                <li><input type="checkbox" id="12to18mos" name="age" value="12to18mos"><label for="12to18mos">12 to 18 mos</label></li>
+                <li><input type="checkbox" id="18to24mos" name="age" value="18to24mos"><label for="18to24mos">18 to 24 mos</label></li>
+              </ul>
+            </li>
+            <li>Price
+              <ul>
+                <li><input type="checkbox" id="under25" name="price" value="under25"><label for="under25">Under $25</label></li>
+                <li><input type="checkbox" id="25to50" name="price" value="25to50"><label for="25to50">$25 to $50</label></li>
+                <li><input type="checkbox" id="50to100" name="price" value="50to100"><label for="50to100">$50 to $100</label></li>
+                <li><input type="checkbox" id="100andAbove" name="price" value="100andAbove"><label for="100andAbove">$100 & Above</label></li>
+                <li><input type="checkbox" id="any" name="price" value="any"><label for="any">Any</label></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+    </div>
+    
+      <!-- End of Profile and Filter Section -->
+<!-- Product cards -->
+<div class="col-md-9">
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-end">
+      <form class="form-inline" onsubmit="event.preventDefault();">
+        <input class="form-control" type="search" id="searchInput" placeholder="Search for a product" oninput="searchProducts()">
+        <button class="btn btn-outline-primary" type="button" onclick="searchProducts()">Search</button>
+      </form>
+    
+    </div>
+
+    <div id="productContainer" class="col-md-12">
+      <div class="row">
+        <!-- Product Cards will be dynamically created here -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Product cards Section -->
+
+
+
+  <hr>
+
+  <!-- Social media links start -->
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <h4>Connect with us:</h4>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <a href="https://www.facebook.com/your-facebook-page" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-facebook-square fa-2x"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://www.instagram.com/your-instagram-page" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-instagram-square fa-2x"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://www.twitter.com/your-twitter-page" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-twitter-square fa-2x"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="mailto:your-email@example.com">
+              <i class="far fa-envelope fa-2x"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Social media links end -->
+
+  <hr>
+
+  <!-- Include jQuery and Bootstrap from CDNs -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+  <script src="js/bootstrap.min.js"></script>
+
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>

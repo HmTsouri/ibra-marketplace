@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/all.min.css">
+  <title>Account Created</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Account Created Successfully!</h3>
+          </div>
+          <div class="card-body">
+            <p>Thank you for creating an account with us.</p>
+            <p>An email has been sent to the address you provided (<span id="emailAddress"></span>). Please check your email for further instructions to complete the account setup process.</p>
+            <p>If you don't receive the email within a few minutes, please check your spam folder.</p>
+            <div class="text-center mt-3">
+              <a href="login.html" class="btn btn-primary">Go to Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Retrieve the email address from the URL query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const emailAddress = urlParams.get('email');
+    
+    // Set the email address in the page
+    const emailAddressElement = document.getElementById('emailAddress');
+    emailAddressElement.textContent = emailAddress;
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/all.min.css">
+  <title>My Webpage</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+
+<body>
+<!-- Admin Profile Section -->
+<div id="admin-profile" class="d-flex align-items-center justify-content-end p-3 bg-light">
+    <div id="profile-picture" class="rounded-circle overflow-hidden d-flex align-items-center justify-content-center">
+      <img src="img/profile.jpg" alt="Profile Picture" class="img-fluid">
+    </div>
+    <div id="profile-options" class="d-flex align-items-center">
+      <button id="notification-icon" class="rounded-circle bg-secondary">
+        <i class="fas fa-bell"></i>
+      </button>
+      <button id="messages-icon" class="rounded-circle bg-secondary">
+        <i class="fas fa-envelope"></i>
+      </button>
+      <button id="logout-icon" class="rounded-circle bg-secondary">
+        <i class="fas fa-sign-out-alt"></i>
+      </button>
+    </div>
+  </div>
+
+ 
+
+  <!-- Showcase start -->
+  <div class="container">
+    <!-- Showcase content -->
+  </div>
+
+
+  <div id="charts" class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-lg-6 col-md-12 text-center chart-container">
+        <canvas id="chartProductQuantity"></canvas>
+      </div>
+      <div class="col-lg-6 col-md-12 text-center chart-container">
+        <canvas id="chartProductSale"></canvas>
+      </div>
+      <div class="col-lg-6 col-md-12 text-center chart-container">
+        <canvas id="chartWeeklySale"></canvas>
+      </div>
+      <div class="col-lg-6 col-md-12 text-center chart-container">
+        <canvas id="chartDailyRevenue"></canvas>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- Options Section -->
+  <div id="options" class="container">
+    <ul>
+        <li> <a href="add-product.html" style="text-decoration: none;">Add product</a></li>
+        <li><a href="delete-product.html" style="text-decoration:none;">Delete product</a></li>
+        <li><a href="update-product.html" style="text-decoration: none ;">Update product</li></li>
+    </ul>
+    <ul>
+      <li><a href="inventory.html"  style="text-decoration: none;" >Sales and Revenue reports</a></li>
+      <li>Make ad or discount to webpage</li>
+      <!-- Add more options as needed -->
+    </ul>
+  </div>
+
+  <!-- Charts library (e.g., Chart.js) and chart configurations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+
+  <script src="js/inventory.js"> </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verification</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Verification</h3>
+          </div>
+          <div class="card-body">
+            <form id="verificationForm">
+              <div class="mb-3">
+                <label for="verificationCode" class="form-label">Verification Code</label>
+                <input type="text" id="verificationCode" class="form-control" placeholder="Enter the verification code"
+                  required>
+              </div>
+              <div class="mb-3">
+                <label for="newPassword" class="form-label">New Password</label>
+                <input type="password" id="newPassword" class="form-control" placeholder="Enter your new password"
+                  required>
+                <small id="passwordStrengthMessage" class="form-text"></small> <!-- Display password strength message -->
+              </div>
+              <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your new password"
+                  required>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Reset Password</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/password.js">  </script>
+
+</body>
+
+</html>

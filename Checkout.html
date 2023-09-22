@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/all.min.css">
+  <title>Checkout</title>
+</head>
+
+<body>
+   <!-- Navigation start -->
+   <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+      <div class="d-flex justify-content-end align-items-center">
+        <!-- Toggler on the left -->
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navmenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Logo on the right -->
+        <a href="HomePage.html">
+          <img src="img/logo.png" alt="" height="255" width="255" class="img-fluid" />
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a href="HomePage.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="service.html" class="nav-link">Service</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="nav-item">
+            <a href="login.html" class="nav-link btn btn-primary">Login</a>
+          </li>
+          <li class="nav-item">
+            <a href="cart.html" class="nav-link btn btn-primary">Cart <span id="cartCount">0</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Navigation end -->
+
+  <!-- Checkout section start -->
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Checkout</h3>
+          </div>
+          <div class="card-body">
+            <h5 class="mb-4">Total Price: <span id="totalPrice">$0</span></h5>
+
+            <form>
+                <h5>Payment Information</h5>
+                <div class="mb-3">
+                  <label for="creditCardNumber" class="form-label">Credit Card Number</label>
+                  <input type="text" class="form-control" id="creditCardNumber">
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="cvv" class="form-label">CVV</label>
+                      <input type="text" class="form-control" id="cvv">
+                    </div>
+                  </div>
+
+                </div>
+              <h5>Billing Address</h5>
+              <div class="mb-3">
+                <label for="billingAddress1" class="form-label">Address 1</label>
+                <input type="text" class="form-control" id="billingAddress1">
+              </div>
+              <div class="mb-3">
+                <label for="billingAddress2" class="form-label">Address 2</label>
+                <input type="text" class="form-control" id="billingAddress2">
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="billingCity" class="form-label">City</label>
+                    <input type="text" class="form-control" id="billingCity">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="billingState" class="form-label">State</label>
+                    <input type="text" class="form-control" id="billingState">
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="billingZipCode" class="form-label">Zip Code</label>
+                <input type="text" class="form-control" id="billingZipCode">
+              </div>
+
+              <h5>Shipping Address</h5>
+              <div class="mb-3">
+                <label for="shippingAddress1" class="form-label">Address 1</label>
+                <input type="text" class="form-control" id="shippingAddress1">
+              </div>
+              <div class="mb-3">
+                <label for="shippingAddress2" class="form-label">Address 2</label>
+                <input type="text" class="form-control" id="shippingAddress2">
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="shippingCity" class="form-label">City</label>
+                    <input type="text" class="form-control" id="shippingCity">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="mb-3">
+                    <label for="shippingState" class="form-label">State</label>
+                    <input type="text" class="form-control" id="shippingState">
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="shippingZipCode" class="form-label">Zip Code</label>
+                <input type="text" class="form-control" id="shippingZipCode">
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="placeOrderButton">Place Order</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Checkout section end -->
+
+
+
+
+
+  <script>
+  document.querySelector('#placeOrderButton').addEventListener('click', function(event) {
+  event.preventDefault();
+
+  // Get the list of items in the cart from local storage
+  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+  // For each item in the cart, send a request to the server to process the sale
+  cartItems.forEach(item => {
+    fetch(`http://localhost:8082/process-sale/${item.productId}?quantitySold=${item.quantity}`, {
+      method: 'POST'
+    })
+    .then(response => response.text())
+    .then(data => {
+      console.log(data);
+      // After successfully placing the order, clear the cart
+      localStorage.removeItem('cartItems');
+      // You might also want to update the UI to reflect that the cart is now empty
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  });
+});
+
+
+
+  </script>
+
+
+
+
+
+</body>
+
+</html>

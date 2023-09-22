@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head >
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/all.min.css">
+  <title>My Webpage</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+
+</head>
+
+<body >
+
+  <div id="loader-wrapper">
+    <div id="loader"></div>
+  </div>
+  
+
+<header class="main-header">
+  <!-- Navigation start -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+    <!-- Toggler on the left -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Logo on the right -->
+    <a href="HomePage.html">
+      <img src="img/kidsmarket.jpg" alt="" height="200" width="200" class="img-fluid" />
+    </a>
+    
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a href="HomePage.html" class="nav-link">Home</a></li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" id="categoriesDropdown" data-bs-toggle="dropdown">
+              Products
+          </a>
+          <div class="dropdown-menu" aria-labelledby="categoriesDropdown">
+              <a class="dropdown-item" href="boys.html">Boys</a>
+              <a class="dropdown-item" href="girls.html">Girls</a>
+              <a class="dropdown-item" href="accessories.html">Accessories</a>
+          </div>
+      </li>
+      
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="service.html" class="nav-link">Service</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      </li>
+     
+      <li class="nav-item">
+        <a href="cart.html" class="nav-link">
+            <div class="cart-icon-container">
+                <i class="fas fa-shopping-cart"></i> 
+                <span id="cartCount" class="cart-count">0</span>
+            </div>
+        </a>
+    </li>
+
+        <li class="nav-item"  >
+          <a href="login.html" class="nav-link btn btn-primary">Login</a>
+        </li>
+     
+
+      
+      </ul>
+    </div>
+  </div>
+</nav>
+</header>
+
+
+
+
+
+     <!-- Showcase start-->
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Welcome to your Baby Kids Market </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!-- filter option and search bar-->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="filter-options">
+        <div class="d-flex align-items-center">
+          <p class="filter-toggler">Filter:</p>
+          <div class="filter-dropdown">
+            <input type="checkbox" id="filter-checkbox" class="filter-toggler-checkbox">
+
+            <label for="filter-checkbox" class="filter-toggler-label">Select Category <i
+                class="fas fa-caret-down"></i></label>
+            <!-- Filter options list -->
+            <div class="filter-options-list">
+              <label>
+                <input type="checkbox" class="filter" value="boys"> boys
+                <span class="filter-count"></span>
+              </label>
+              <label>
+                <input type="checkbox" class="filter" value="girls"> Girls
+                <span class="filter-count"></span>
+              </label>
+              <label>
+                <input type="checkbox" class="filter" value="accessories"> accessories
+                <span class="filter-count"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- Total count in the filter options -->
+        <p class="mt-2">Total Items: <span id="totalItemCount">0</span></p>
+      </div>
+    </div>
+    <div class="col-md-8 d-flex justify-content-end">
+      <form class="form-inline" onsubmit="event.preventDefault(); searchProducts();">
+        <div class="input-group">
+          <input class="form-control" type="search" id="searchInput" placeholder="Search for a product">
+          <button class="btn btn-outline-primary" type="submit">Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Filter checkboxes -->
+
+<div id="productContainer">
+  <div class="row">
+      <div class="col-lg-2">
+          <!-- Left ad space -->
+      </div>
+
+      <div class="col-lg-8">
+          <div id="product-inner-container" class="row justify-content-center">
+              <!-- Your product cards will be injected here by JavaScript -->
+          </div>
+      </div>
+
+      <div class="col-lg-2">
+          <!-- Right ad space -->
+      </div>
+  </div>
+</div>
+
+
+
+
+<hr>
+
+  
+  <!-- Social media links start -->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+      <h4>Connect with us:</h4>
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          <a href="https://www.facebook.com/your-facebook-page" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-facebook-square fa-2x"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="https://www.instagram.com/your-instagram-page" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram-square fa-2x"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="https://www.twitter.com/your-twitter-page" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-twitter-square fa-2x"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="mailto:your-email@example.com">
+            <i class="far fa-envelope fa-2x"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+  <!-- Social media links end -->
+
+  <hr> 
+
+
+
+
+  <!-- Include jQuery and Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+<!-- Bootstrap JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <!-- Filter options -->
+  <script src="js/homepagecart.js"></script>
+ <!-- <script src="js/main.js"></script>-->
+
+</body>
+
+</html>

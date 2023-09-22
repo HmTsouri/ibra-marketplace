@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/all.min.css">
+        <title>Add Product</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <style>
+            .card {
+              border: 1px solid #ccc;
+              margin: 10px;
+              width: 100px; /* Set a width */
+              height: 100px; /* Set a height */
+              overflow: hidden; /* Hide the overflowing content */
+            }
+            .card-img-top {
+              width: 100%; /* Stretch the image to cover the width */
+              height: 100%; /* Stretch the image to cover the height */
+              object-fit: contain; /* Preserve aspect ratio and cover the entire container */
+            }
+          </style>
+      </head>
+<body>
+  <!-- Admin Profile Section -->
+<div id="admin-profile" class="d-flex align-items-center justify-content-end p-3 bg-light">
+    <div id="profile-picture" class="rounded-circle overflow-hidden d-flex align-items-center justify-content-center">
+      <img src="img/profile.jpg" alt="Profile Picture" class="img-fluid">
+    </div>
+    <div id="profile-options" class="d-flex align-items-center">
+      <button id="notification-icon" class="rounded-circle bg-secondary">
+        <i class="fas fa-bell"></i>
+      </button>
+      <button id="messages-icon" class="rounded-circle bg-secondary">
+        <i class="fas fa-envelope"></i>
+      </button>
+      <button id="logout-icon" class="rounded-circle bg-secondary">
+        <i class="fas fa-sign-out-alt"></i>
+      </button>
+    </div>
+  </div>
+  <div id="loader" style="display: none;">Loading...</div>
+
+  <div class="container mt-5">
+    <h2>Add New Product</h2>
+    <form method="POST" action="/your-backend-endpoint" enctype="multipart/form-data">
+       <div class="form-group">
+        <label for="productName">Product Name</label>
+        <input type="text" class="form-control" id="productName" name="productName" placeholder="Enter product name">
+      </div>
+      <div class="form-group">
+        <label for="productCategory">Category</label>
+        <select class="form-control" id="productCategory" name="productCategory">
+          <option value="">Select category</option>
+          <option value="boys">Boys</option>
+          <option value="girls">Girls</option>
+          <option value="accessories">Accessories</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="productPrice">Price</label>
+        <input type="number" class="form-control" id="productPrice" name="productPrice" placeholder="Enter product price">
+      </div>
+      <div class="form-group">
+        <label for="productQuantity">Quantity</label>
+        <input type="number" class="form-control" id="productQuantity" name="productQuantity" placeholder="Enter product quantity">
+      </div>
+
+            <div class="form-group">
+        <label for="productAge">Age</label>
+        <input type="number" class="form-control" id="productAge" name="productAge" placeholder="Enter product age">
+      </div>
+      
+      <div class="form-group">
+        <label for="productDescription">Description</label>
+        <textarea class="form-control" id="productDescription" name="productDescription" rows="3" placeholder="Enter product description"></textarea>
+      </div>
+
+      
+      <div class="form-group">
+        <label for="productPictures">Product Pictures</label>
+        <div id="imagePreviewContainer" class="d-flex flex-wrap">
+          <div id="addImage" class="card text-center align-items-center justify-content-center border-secondary">
+            <i class="fas fa-plus fa-2x"></i>
+          </div>
+        </div>
+        <input type="file" class="form-control-file d-none" id="productPictures" name="productPictures" accept="image/*" multiple>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+
+  <script src="js/addproduct.js">  </script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

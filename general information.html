@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/all.min.css">
+  <title>General Information</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Navigation start -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+      <div class="d-flex justify-content-end align-items-center">
+        <!-- Toggler on the left -->
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navmenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Logo on the right -->
+        <a href="HomePage.html">
+          <img src="img/logo.png" alt="" height="255" width="255" class="img-fluid" />
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navmenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a href="userpage.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="service.html" class="nav-link">Service</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Navigation end -->
+
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-4">
+        <div class="profile-section">
+          <div id="user-profile-page">
+            <div class="profile-image">
+              <div id="profile-picture"></div>
+              <label for="profile-upload" class="upload-icon">
+                <i class="fas fa-plus"></i>
+                <input type="file" id="profile-upload" accept="image/*" hidden>
+              </label>
+              <div id="upload-buttons" style="display: none;">
+                <button id="save-button" class="save-btn">Save</button>
+                <button id="cancel-button" class="cancel-btn">Cancel</button>
+              </div>
+            </div>
+            
+            <div class="username">
+              <p id="username"></p>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div>
+      
+      <div class="col-md-8">
+        <div class="info-section">
+          <div class="info-item">
+            <h5>Username</h5>
+            <div class="modify-section">
+              <input id="username-input" type="text" class="form-control" value="" disabled>
+              <span class="modify-btn"><i class="fas fa-pen"></i></span>
+              <div class="btn-group">
+                <button class="cancel-btn">Cancel</button>
+                <button class="save-btn">Save</button>
+              </div>
+            </div>
+          </div>
+          <div class="info-item">
+            <h5>Password</h5>
+            <div class="modify-section">
+              <input type="password" class="form-control" value="********" disabled>
+              <span class="modify-btn"><i class="fas fa-pen"></i></span>
+              <div class="btn-group">
+                <button class="cancel-btn">Cancel</button>
+                <button class="save-btn">Save</button>
+              </div>
+            </div>
+          </div>
+          <div class="info-item">
+            <h5>Email Address</h5>
+            <p id="email-value"></p>
+            <div class="modify-section">
+              <input id="email-input" type="email" class="form-control" value="" disabled>
+              <span class="modify-btn"><i class="fas fa-pen"></i></span>
+              <div class="btn-group">
+                <button class="cancel-btn">Cancel</button>
+                <button class="save-btn">Save</button>
+              </div>
+            </div>
+          </div>
+          <div class="info-item">
+            <h5>Phone Number</h5>
+            <p id="phone-value"></p>
+            <div class="modify-section">
+              <input id="phone-input" type="text" class="form-control" value="" disabled>
+              <span class="modify-btn"><i class="fas fa-pen"></i></span>
+              <div class="btn-group">
+                <button class="cancel-btn">Cancel</button>
+                <button class="save-btn">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Include jQuery and Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const profileUpload = document.getElementById("profile-upload");
+      const uploadButtons = document.getElementById("upload-buttons");
+      const saveButton = document.getElementById("save-button");
+      const cancelButton = document.getElementById("cancel-button");
+  
+      profileUpload.addEventListener("change", function() {
+        uploadButtons.style.display = "block";
+      });
+  
+      saveButton.addEventListener("click", function() {
+        uploadButtons.style.display = "none";
+        location.reload(); // Refresh the page after saving the profile picture
+      });
+  
+      cancelButton.addEventListener("click", function() {
+        uploadButtons.style.display = "none";
+        profileUpload.value = ""; // Reset the file input
+      });
+    });
+  </script>
+  <!-- JavaScript code -->
+  <script src="js/user-info.js"></script>
+  <script src="js/updateinfo.js"></script>
+</body>
+</html>
